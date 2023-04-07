@@ -7,8 +7,16 @@
 //
 
 import SwiftUI
-import UIKit
+#if os(OSX)
+  import Cocoa
+#elseif os(iOS)
+  import UIKit
+#endif
 
+#if os(OSX)
+struct ActivityIndicator: NSViewRepresentable {
+}
+#elseif os(iOS)
 struct ActivityIndicator: UIViewRepresentable {
     let isAnimating: Bool
     
@@ -31,3 +39,4 @@ struct ActivityIndicator: UIViewRepresentable {
         }
     }
 }
+#endif
