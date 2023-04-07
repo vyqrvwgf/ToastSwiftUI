@@ -63,7 +63,11 @@ public struct ToastView: View {
         case .custom(let image):
             image
         case .loading:
-            ActivityIndicator()
+#if os(OSX)
+          assertionFailure("Unsupported type for macos")
+#elseif os(iOS)
+          ActivityIndicator()
+#endif
         }
     }
 }
